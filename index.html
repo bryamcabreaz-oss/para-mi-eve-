@@ -1,0 +1,125 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Para Eve 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-image: url('https://i.pinimg.com/originals/e8/39/70/e83970db6398fbf627c49e8230f9ade3.gif');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      font-family: 'Comfortaa', cursive;
+      text-align: center;
+      padding: 40px;
+      margin: 0;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      color: #333;
+    }
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 40px;
+      color: #d96ba0;
+    }
+    p {
+      font-size: 1.2em;
+      line-height: 1.4em;
+    }
+    iframe {
+      width: 160px;
+      height: 90px;
+      border-radius: 15px;
+      border: none;
+      margin: 15px 0;
+    }
+    .gif {
+      width: 100px;
+      height: auto;
+      border-radius: 10px;
+      margin: 0 10px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Para ti, mi queridisima Evesita :3 🌸</h1>
+    <p>
+      En cada día que paso a tu lado... de alguna forma, encuentro luz,<br />
+      tu amistad es mi refugio, mi rincón de paz que siempre me llena de alegría en mis días más oscuros y tenebrosos.<br />
+      Gracias por tus risas, abrazos y tu hermosa amistad,<br />
+      que nunca falte este mágico sentimiento de hermandad en mi vida :3.<br />
+      Siempre te voy a agradecer por tantas cosas, gracias simplemente por estar en mi vida.
+    </p>
+
+    <img src="https://i.pinimg.com/originals/1a/5b/5b/1a5b5b58da5f8dad79acba99304167c4.gif" alt="gif bonito" class="gif" />
+    
+    <iframe
+      id="ytplayer"
+      src="https://www.youtube.com/embed/u51DVL5oyds?enablejsapi=1"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+    
+    <img src="https://i.pinimg.com/originals/ec/4e/2c/ec4e2ca432bcfea4e7070d0a10ccd0d9.gif" alt="gif bonito" class="gif" />
+    
+    <p><strong>Te quiero mucho, Evesita :3. Y de todo corazón espero que nuestra amistad dure para siempre 💖🐱 Grrr...</strong></p>
+    
+    <audio
+      id="bg-music"
+      src="https://www.dropbox.com/scl/fi/3r5yrgc4r7rp810561ovv/Vocaroo-1h3TWlVideyn.mp3?raw=1"
+      autoplay
+      loop
+      muted
+    ></audio>
+  </div>
+
+  <script>
+    const bgMusic = document.getElementById('bg-music');
+
+    // Para quitar el mute y que suene al primer click
+    document.body.addEventListener('click', () => {
+      if (bgMusic.paused) {
+        bgMusic.muted = false;
+        bgMusic.play();
+      }
+    });
+
+    let player;
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('ytplayer', {
+        events: {
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.PLAYING) {
+        bgMusic.pause();
+      } else if (
+        event.data === YT.PlayerState.PAUSED ||
+        event.data === YT.PlayerState.ENDED
+      ) {
+        bgMusic.play();
+      }
+    }
+
+    // Carga la API de YouTube para controlar el iframe
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  </script>
+</body>
+</html>
